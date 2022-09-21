@@ -1,6 +1,5 @@
-import { MinesweeperService } from './services/minesweeper.service';
 import { Component, OnInit } from '@angular/core';
-import { Room } from 'colyseus.js';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'multitplayer-games-monorepo-root',
@@ -8,14 +7,9 @@ import { Room } from 'colyseus.js';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  private room: Room<any> = new Room('');
-
-  constructor(private game: MinesweeperService) {}
+  constructor(private primengConfig: PrimeNGConfig) {}
 
   ngOnInit(): void {
-    this.game.joinOrCreate().subscribe((room) => {
-      this.room = room;
-      console.log(room, '////////////////////////////');
-    });
+    this.primengConfig.ripple = true;
   }
 }

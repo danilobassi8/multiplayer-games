@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -6,6 +7,6 @@ import { MinesweeperGameComponent } from './minesweeper-game/minesweeper-game.co
 
 @NgModule({
   declarations: [MinesweeperGameComponent],
-  imports: [CommonModule, MinesweeperRoutingModule],
+  imports: [CommonModule, MinesweeperRoutingModule, SharedModule],
 })
 export class MinesweeperModule {}

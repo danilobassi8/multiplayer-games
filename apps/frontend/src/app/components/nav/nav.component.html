@@ -1,1 +1,26 @@
-<p>nav works!</p>
+<p-menubar [model]="items">
+  <button
+    *ngIf="!(auth.isAuthenticated$ | async)"
+    pButton
+    label="Login"
+    icon="pi pi-user"
+    (click)="auth.loginWithRedirect()"
+  ></button>
+
+  <p-avatar
+    id="avatar"
+    *ngIf="auth.user$ | async as user"
+    [image]="user.picture || ''"
+    [label]="getUserLabel(user)"
+    styleClass="mr-2 cursor-pointer"
+    size="large"
+    shape="circle"
+    referrerpolicy="no-referrer"
+    (click)="avatarMenu.toggle($event)"
+  ></p-avatar>
+  <p-tieredMenu #avatarMenu [model]="avatarOptions" [popup]="true"></p-tieredMenu>
+</p-menubar>
+
+<code>
+  {{ auth.user$ | async | json}}
+</code>

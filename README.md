@@ -1,6 +1,7 @@
 
 
 # MultitplayerGamesMonorepo
+by [Danilo Bassi](https://www.linkedin.com/in/danilobassi8/)
 
 This project was generated using [Nx](https://nx.dev).
 
