@@ -5,6 +5,10 @@
 export const environment = {
   production: false,
   backend_url: 'localhost:3333',
+  auth0: {
+    domain: 'dev-hy0wbfcw.us.auth0.com',
+    clientId: 'EnSZCYGWUaIxM2acYtKX6YT9HOejv8nV',
+  },
 };
 
 /*
