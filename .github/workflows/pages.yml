@@ -20,10 +20,10 @@ jobs:
         with:
           node-version: 16.x
       - name: Install NPM Dependencies
-        working-directory: ./frontend
+        working-directory: ./
         run: npm i
       - name: Build Project
-        working-directory: ./frontend
+        working-directory: ./
         run: npm run build --prod
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
