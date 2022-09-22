@@ -24,7 +24,7 @@ jobs:
         run: npm i
       - name: Build Project
         working-directory: ./
-        run: npm run build --prod
+        run: npm run build-front-prod
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:

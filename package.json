@@ -7,6 +7,7 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx serve",
     "build": "nx build",
+    "build-front-prod": "nx build frontend --configuration=production --base-href=/multiplayer-games",
     "test": "nx test",
     "dev": "nx run-many --exclude=frontend-e2e --target=serve"
   },
