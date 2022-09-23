@@ -8,6 +8,7 @@ export const environment = {
   auth0: {
     domain: 'dev-hy0wbfcw.us.auth0.com',
     clientId: 'EnSZCYGWUaIxM2acYtKX6YT9HOejv8nV',
+    redirectUri: 'http://localhost:4200/',
   },
 };
 

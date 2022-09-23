@@ -5,5 +5,6 @@ export const environment = {
     // TODO: Update this
     domain: 'dev-hy0wbfcw.us.auth0.com',
     clientId: 'EnSZCYGWUaIxM2acYtKX6YT9HOejv8nV',
+    redirectUri: 'https://danilobassi8.github.io/multiplayer-games/',
   },
 };

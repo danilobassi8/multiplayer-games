@@ -15,6 +15,7 @@ import { LayoutComponent } from './components/layout/layout.component';
     AuthModule.forRoot({
       domain: environment.auth0.domain,
       clientId: environment.auth0.clientId,
+      redirectUri: environment.auth0.redirectUri,
       cacheLocation: 'localstorage',
       useRefreshTokens: true,
     }),
