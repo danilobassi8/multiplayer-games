@@ -5,8 +5,15 @@
   .matrix-container {
     display: grid;
     grid-gap: 0px;
+    justify-content: center;
 
     .matrix-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+
       cursor: pointer;
       background-color: #c0c0c0;
       border: 1.5px solid;
@@ -17,4 +24,10 @@
       aspect-ratio: 1;
     }
   }
+}
+
+.bomb-image {
+  position: absolute;
+  width: 100%;
+  transform: translateY(-2px);
 }

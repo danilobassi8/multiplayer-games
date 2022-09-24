@@ -3,26 +3,31 @@
     [options]="difficultyOptions"
     [(ngModel)]="selectedDifficulty"
     (onChange)="difficultyChange()"
-    styleClass="my-1"
+    styleClass="mt-2"
   >
     <ng-template let-item> {{item | titlecase}} </ng-template>
   </p-selectButton>
 </div>
 
 <div class="main-double-board">
-  <div class="container">
-    <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
-  </div>
+  <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
 </div>
 
 <ng-template #matrixTemplate let-matrix="matrix">
-  <div class="matrix-wrapper">
+  <div class="matrix-wrapper pb-2">
     <div
       class="matrix-container"
-      [style.grid-template-columns]="'repeat(' + currentConfig.size + ',minmax(20px, 1fr))'"
+      [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 100%) / ' + currentConfig.size +'))'"
     >
       <ng-container *ngFor="let row of matrix; let i = index">
-        <div *ngFor="let col of row" class="matrix-col"></div>
+        <div *ngFor="let col of row; let j = index" class="matrix-col">
+          <!-- bomb-image -->
+          <img
+            *ngIf="(j + 1) + (i  * currentConfig.size) <= 10"
+            src="/assets/bomb.png"
+            class="bomb-image"
+          />
+        </div>
       </ng-container>
     </div>
   </div>

@@ -14,7 +14,7 @@ export class MinesweeperService extends BaseGameService {
   gameConfig: gameConfigs = {
     easy: { bombs: 10, size: 9 },
     medium: { bombs: 16, size: 40 },
-    hard: { bombs: 30, size: 160 },
+    hard: { bombs: 30, size: 60 },
   };
 
   constructor() {
