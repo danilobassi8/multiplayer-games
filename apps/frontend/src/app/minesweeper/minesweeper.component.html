@@ -1,22 +1,29 @@
-<p>minesweeper-game works!</p>
+<div class="d-flex justify-content-end">
+  <p-selectButton
+    [options]="difficultyOptions"
+    [(ngModel)]="selectedDifficulty"
+    (onChange)="difficultyChange()"
+    styleClass="my-1"
+  >
+    <ng-template let-item> {{item | titlecase}} </ng-template>
+  </p-selectButton>
+</div>
 
 <div class="main-double-board">
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
-    </div>
-    <div class="col-12 col-md-6">
-      <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:enemyMatrix}"></ng-container>
+  <div class="container">
+    <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
+  </div>
+</div>
+
+<ng-template #matrixTemplate let-matrix="matrix">
+  <div class="matrix-wrapper">
+    <div
+      class="matrix-container"
+      [style.grid-template-columns]="'repeat(' + currentConfig.size + ',minmax(20px, 1fr))'"
+    >
+      <ng-container *ngFor="let row of matrix; let i = index">
+        <div *ngFor="let col of row" class="matrix-col"></div>
+      </ng-container>
     </div>
   </div>
-
-  <ng-template #matrixTemplate let-matrix="matrix">
-    <table>
-      <tbody>
-        <tr *ngFor="let row of matrix; let i = index">
-          <td *ngFor="let col of matrix[i]" class="game-cell"></td>
-        </tr>
-      </tbody>
-    </table>
-  </ng-template>
-</div>
+</ng-template>

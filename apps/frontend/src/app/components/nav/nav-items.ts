@@ -2,23 +2,13 @@ import { MenuItem } from 'primeng/api';
 
 export const NAV_ITEMS: MenuItem[] = [
   {
-    label: 'File',
+    label: 'Home',
     icon: 'pi pi-fw pi-file',
+    routerLink: '/',
   },
   {
-    label: 'Edit',
+    label: 'Minesweeper',
     icon: 'pi pi-fw pi-pencil',
-  },
-  {
-    label: 'Users',
-    icon: 'pi pi-fw pi-user',
-  },
-  {
-    label: 'Events',
-    icon: 'pi pi-fw pi-calendar',
-  },
-  {
-    label: 'Quit',
-    icon: 'pi pi-fw pi-power-off',
+    routerLink: './minesweeper',
   },
 ];

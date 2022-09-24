@@ -1,7 +1,9 @@
 import { BaseGameService } from './base-game.service';
 import { Injectable } from '@angular/core';
 
-export type gameDifficulty = 'easy' | 'medium' | 'hard';
+export const MinesweeperDifficulties = ['easy', 'medium', 'hard'] as const;
+
+export type gameDifficulty = typeof MinesweeperDifficulties[number];
 export type gameConfig = { bombs: number; size: number };
 export type gameConfigs = { [key in gameDifficulty]: gameConfig };
 

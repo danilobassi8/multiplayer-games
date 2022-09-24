@@ -1,4 +1,7 @@
-<p-menubar [model]="items">
+<div class="menubar-end-container">
+  <div class="menubar-end"></div>
+</div>
+<p-menubar [model]="items" [baseZIndex]="-10">
   <button
     *ngIf="!(auth.isAuthenticated$ | async)"
     pButton

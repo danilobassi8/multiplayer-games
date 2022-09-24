@@ -1,9 +1,9 @@
-import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, Router } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: HomeComponent },
   {
     path: 'minesweeper',
     loadChildren: () => import('./minesweeper/minesweeper.module').then((m) => m.MinesweeperModule),

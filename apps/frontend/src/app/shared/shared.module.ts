@@ -9,18 +9,19 @@ import { MenubarModule } from 'primeng/menubar';
 import { AvatarModule } from 'primeng/avatar';
 import { DropdownModule } from 'primeng/dropdown';
 import { TieredMenuModule } from 'primeng/tieredmenu';
+import { CardModule } from 'primeng/card';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 const MODULES = [
-  BrowserModule,
   FormsModule,
-  CommonModule,
-  BrowserAnimationsModule,
   TieredMenuModule,
   ButtonModule,
   ToggleButtonModule,
   MenubarModule,
   DropdownModule,
+  CardModule,
   AvatarModule,
+  SelectButtonModule,
 ];
 
 @NgModule({
