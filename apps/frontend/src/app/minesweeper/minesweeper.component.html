@@ -19,14 +19,9 @@
       class="matrix-container"
       [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 100%) / ' + currentConfig.size +'))'"
     >
-      <ng-container *ngFor="let row of matrix; let i = index">
-        <div *ngFor="let col of row; let j = index" class="matrix-col">
-          <!-- bomb-image -->
-          <img
-            *ngIf="(j + 1) + (i  * currentConfig.size) <= 10"
-            src="/assets/bomb.png"
-            class="bomb-image"
-          />
+      <ng-container *ngFor="let row of matrix">
+        <div *ngFor="let col of row" class="matrix-col">
+          <img *ngIf="col.bomb" src="/assets/bomb.png" class="bomb-image" />
         </div>
       </ng-container>
     </div>

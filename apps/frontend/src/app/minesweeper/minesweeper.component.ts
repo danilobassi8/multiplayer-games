@@ -1,9 +1,5 @@
-import {
-  gameConfig,
-  gameDifficulty,
-  MinesweeperDifficulties,
-} from './../services/minesweeper.service';
-import { Matrix } from './../../../../../libs/minesweeper.lib';
+import { gameDifficulty, MinesweeperDifficulties } from './../services/minesweeper.service';
+import { Matrix, gameConfig } from './../../../../../libs/minesweeper.lib';
 import { Component, OnInit } from '@angular/core';
 import { MinesweeperService } from '../services/minesweeper.service';
 
@@ -21,16 +17,16 @@ export class MinesweeperComponent implements OnInit {
 
   constructor(public game: MinesweeperService) {
     this.currentConfig = this.game.gameConfig.easy;
-    this.userMatrix = new Matrix(this.currentConfig.size, 'userMatrix');
-    this.enemyMatrix = new Matrix(this.currentConfig.size, 'enemyMatrix');
+    this.userMatrix = new Matrix(this.currentConfig.size, 'userMatrix', this.currentConfig);
+    this.enemyMatrix = new Matrix(this.currentConfig.size, 'enemyMatrix', this.currentConfig);
   }
 
   ngOnInit(): void {}
 
   initializeMatrices() {
     this.currentConfig = this.game.gameConfig[this.selectedDifficulty];
-    this.userMatrix = new Matrix(this.currentConfig.size, 'userMatrix');
-    this.enemyMatrix = new Matrix(this.currentConfig.size, 'enemyMatrix');
+    this.userMatrix = new Matrix(this.currentConfig.size, 'userMatrix', this.currentConfig);
+    this.enemyMatrix = new Matrix(this.currentConfig.size, 'enemyMatrix', this.currentConfig);
   }
 
   difficultyChange() {
