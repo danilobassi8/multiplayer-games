@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'minesweeper',
     loadChildren: () => import('./minesweeper/minesweeper.module').then((m) => m.MinesweeperModule),
   },
+  {
+    path: 'buscaminas',
+    redirectTo: 'minesweeper',
+  },
 ];
 
 @NgModule({
