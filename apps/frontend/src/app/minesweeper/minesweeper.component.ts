@@ -23,7 +23,6 @@ export class MinesweeperComponent implements OnInit {
   initializeMatrices() {
     this.currentConfig = this.game.gameConfig[this.selectedDifficulty];
     this.userMatrix = new Matrix(this.currentConfig.size, 'userMatrix', this.currentConfig);
-    this.userMatrix.forEach((row) => row.forEach((cell) => (cell.revealed = true)));
   }
 
   difficultyChange() {
