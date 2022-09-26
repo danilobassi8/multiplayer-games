@@ -25,7 +25,7 @@
           class="matrix-col"
           [class.revealed]="cell.revealed"
           [class.empty]="cell.revealed && cell.nearBombs == 0 && !cell.bomb"
-          (click)="cell.revealed = true"
+          (click)="matrix.reveal(cell)"
         >
           <img *ngIf="cell.bomb" src="/assets/bomb.png" class="bomb-image" />
           <ng-container *ngTemplateOutlet="cellNumber; context: {cell}"></ng-container>

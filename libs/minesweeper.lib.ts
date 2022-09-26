@@ -22,6 +22,7 @@ export class Cell {
 export type gameConfig = { bombs: number; size: number };
 
 export class Matrix extends Array<Array<Cell>> {
+  status: 'playing' | 'game over' | 'win' = 'playing';
   player: any;
 
   constructor(maxSize: number, player, gameConfig: gameConfig) {
@@ -72,12 +73,32 @@ export class Matrix extends Array<Array<Cell>> {
 
     addItem(cRow + 1, cCol + 1);
     addItem(cRow + 1, cCol - 1);
-    addItem(cRow + 1, cCol);
+    addItem(cRow + 1, cCol + 0);
     addItem(cRow - 1, cCol + 1);
     addItem(cRow - 1, cCol - 1);
-    addItem(cRow - 1, cCol);
-    addItem(cRow, cCol + 1);
-    addItem(cRow, cCol - 1);
+    addItem(cRow - 1, cCol + 0);
+    addItem(cRow + 0, cCol + 1);
+    addItem(cRow + 0, cCol - 1);
     return cells;
+  }
+
+  reveal(cell: Cell) {
+    if (cell.bomb) {
+      this.status = 'game over';
+      this.revealAllCells();
+      return;
+    }
+
+    cell.revealed = true;
+
+    if (cell.nearBombs === 0) {
+      this.getCellsArround(cell)
+        .filter((cell) => cell.revealed == false)
+        .forEach((cell) => this.reveal(cell));
+    }
+  }
+
+  revealAllCells() {
+    this.forEach((row) => row.forEach((cel) => (cel.revealed = true)));
   }
 }
