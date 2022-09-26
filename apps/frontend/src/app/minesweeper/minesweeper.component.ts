@@ -13,6 +13,7 @@ export class MinesweeperComponent implements OnInit {
   public currentConfig!: gameConfig;
   public selectedDifficulty: gameDifficulty = 'easy';
   public difficultyOptions: gameDifficulty[] = [...MinesweeperDifficulties];
+  public networkGamemode = 'Offline';
 
   constructor(public game: MinesweeperService) {
     this.initializeMatrices();

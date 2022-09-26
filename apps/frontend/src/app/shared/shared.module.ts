@@ -11,6 +11,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { CardModule } from 'primeng/card';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { FieldsetModule } from 'primeng/fieldset';
 
 const MODULES = [
   FormsModule,
@@ -22,6 +23,7 @@ const MODULES = [
   CardModule,
   AvatarModule,
   SelectButtonModule,
+  FieldsetModule,
 ];
 
 @NgModule({

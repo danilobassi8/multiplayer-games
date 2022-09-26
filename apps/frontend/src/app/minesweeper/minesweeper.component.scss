@@ -2,3 +2,29 @@
   width: 100%;
 }
 
+.options-card-header {
+  transform: translateY(+30px);
+  background-color: var(--surface-section);
+  width: fit-content;
+
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius);
+}
+
+.config-manager {
+  &.easy {
+    .text-colored {
+      color: var(--green);
+    }
+  }
+  &.medium {
+    .text-colored {
+      color: var(--orange);
+    }
+  }
+  &.hard {
+    .text-colored {
+      color: var(--red);
+    }
+  }
+}

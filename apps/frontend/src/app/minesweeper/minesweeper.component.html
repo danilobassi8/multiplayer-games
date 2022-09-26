@@ -1,20 +1,12 @@
-<div class="d-flex justify-content-end">
-  <p-selectButton
-    [options]="difficultyOptions"
-    [(ngModel)]="selectedDifficulty"
-    (onChange)="difficultyChange()"
-    styleClass="mt-2"
-  >
-    <ng-template let-item> {{item | titlecase}} </ng-template>
-  </p-selectButton>
-</div>
-
 <div class="main-double-board">
-  <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
+  <div class="row">
+    <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
+    <ng-container *ngTemplateOutlet="optionMenuTemplate"></ng-container>
+  </div>
 </div>
 
 <ng-template #matrixTemplate let-matrix="matrix">
-  <div class="matrix-wrapper pb-2">
+  <div class="matrix-wrapper col-12 col-md-6 my-3">
     <div
       class="matrix-container matrix-sized-{{currentConfig.size}}"
       [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 100%) / ' + currentConfig.size +'))'"
@@ -40,4 +32,63 @@
     *ngIf="!cell.bomb && cell.revealed"
     class="m-0 p-0 near-bombs-text near-{{cell.nearBombs}}"
   ></span>
+</ng-template>
+
+<ng-template #optionMenuTemplate>
+  <div class="col-12 col-md-6">
+    <div class="d-flex justify-content-center my-4">
+      <p-selectButton
+        [options]="difficultyOptions"
+        [(ngModel)]="selectedDifficulty"
+        (onChange)="difficultyChange()"
+        styleClass="mt-3"
+      >
+        <ng-template let-item> {{item | titlecase}} </ng-template>
+      </p-selectButton>
+    </div>
+
+    <div class="config-manager {{selectedDifficulty}}">
+      <div class="options-card-header my-0 mx-3 p-2">
+        <h3>
+          Configuration: <span class="text-colored">{{ selectedDifficulty | titlecase }}</span>
+        </h3>
+      </div>
+      <p-card>
+        <ul>
+          <li>
+            <h4>
+              Size:
+              <span class="text-colored">{{currentConfig.size}} x {{currentConfig.size}}</span>
+            </h4>
+          </li>
+          <li>
+            <h4>
+              Cells: <span class="text-colored">{{currentConfig.size * currentConfig.size}}</span>
+            </h4>
+          </li>
+          <li>
+            <h4>Bombs: <span class="text-colored">{{currentConfig.bombs}}</span></h4>
+          </li>
+        </ul>
+
+        <div class="d-flex justify-content-center">
+          <p-selectButton
+            [options]="['Multiplayer', 'Offline']"
+            [(ngModel)]="networkGamemode"
+          ></p-selectButton>
+        </div>
+      </p-card>
+
+      <div class="d-flex justify-content-center my-4">
+        <button
+          pButton
+          class="p-button-lg"
+          type="button"
+          icon="pi pi-check"
+          iconPos="left"
+          label="Play!"
+        ></button>
+      </div>
+    </div>
+  </div>
 </ng-template>
