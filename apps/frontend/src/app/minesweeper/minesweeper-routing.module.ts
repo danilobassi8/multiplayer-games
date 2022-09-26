@@ -1,8 +1,17 @@
-import { NgModule } from '@angular/core';
+import { DifficultySelectorComponent } from './difficulty-selector/difficulty-selector.component';
+import { LobbyComponent } from './lobby/lobby.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MinesweeperComponent } from './minesweeper.component';
+import { NgModule } from '@angular/core';
 
-const routes: Routes = [{ path: '', children: [{ path: '', component: MinesweeperComponent }] }];
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      { path: '', component: LobbyComponent },
+      { path: 'create', component: DifficultySelectorComponent },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

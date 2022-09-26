@@ -19,7 +19,16 @@ $cell_colors: (
     font-weight: bolder;
 
     &.matrix-sized-8 {
-      font-size: 25px;
+      font-size: 2rem;
+    }
+    &.matrix-sized-30 {
+      font-size: 9px;
+      @media (max-width: 1100px) {
+        font-size: 7px;
+      }
+      @media (max-width: 768px) {
+        font-size: 9px;
+      }
     }
 
     .matrix-col {

@@ -1,12 +1,12 @@
 <div class="main-double-board">
-  <div class="row">
+  <div class="row align-items-center">
     <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
     <ng-container *ngTemplateOutlet="optionMenuTemplate"></ng-container>
   </div>
 </div>
 
 <ng-template #matrixTemplate let-matrix="matrix">
-  <div class="matrix-wrapper col-12 col-md-6 my-3">
+  <div class="matrix-wrapper col-12 col-md-7 my-3">
     <div
       class="matrix-container matrix-sized-{{currentConfig.size}}"
       [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 100%) / ' + currentConfig.size +'))'"
@@ -35,7 +35,7 @@
 </ng-template>
 
 <ng-template #optionMenuTemplate>
-  <div class="col-12 col-md-6">
+  <div class="col-12 col-md-5 pr-md-4">
     <div class="d-flex justify-content-center my-4">
       <p-selectButton
         [options]="difficultyOptions"
@@ -49,7 +49,7 @@
 
     <div class="config-manager {{selectedDifficulty}}">
       <div class="options-card-header my-0 mx-3 p-2">
-        <h3>
+        <h3 class="text-center">
           Configuration: <span class="text-colored">{{ selectedDifficulty | titlecase }}</span>
         </h3>
       </div>

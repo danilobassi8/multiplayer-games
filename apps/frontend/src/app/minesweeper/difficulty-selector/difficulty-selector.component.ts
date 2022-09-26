@@ -1,14 +1,17 @@
-import { gameDifficulty, MinesweeperDifficulties } from './../services/minesweeper.service';
-import { Matrix, gameConfig } from './../../../../../libs/minesweeper.lib';
 import { Component, OnInit } from '@angular/core';
-import { MinesweeperService } from '../services/minesweeper.service';
+import { gameConfig, Matrix } from 'libs/minesweeper.lib';
+import {
+  gameDifficulty,
+  MinesweeperDifficulties,
+  MinesweeperService,
+} from '../../services/minesweeper.service';
 
 @Component({
-  selector: 'app-minesweeper',
-  templateUrl: './minesweeper.component.html',
-  styleUrls: ['./minesweeper.component.scss', './matrixStyles.scss'],
+  selector: 'app-difficulty-selector',
+  templateUrl: './difficulty-selector.component.html',
+  styleUrls: ['./difficulty-selector.component.scss', '../matrixStyles.scss'],
 })
-export class MinesweeperComponent implements OnInit {
+export class DifficultySelectorComponent implements OnInit {
   public userMatrix!: Matrix;
   public currentConfig!: gameConfig;
   public selectedDifficulty: gameDifficulty = 'easy';
