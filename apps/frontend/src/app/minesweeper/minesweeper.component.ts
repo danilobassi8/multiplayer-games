@@ -6,19 +6,16 @@ import { MinesweeperService } from '../services/minesweeper.service';
 @Component({
   selector: 'app-minesweeper',
   templateUrl: './minesweeper.component.html',
-  styleUrls: ['./minesweeper.component.scss'],
+  styleUrls: ['./minesweeper.component.scss', './matrixStyles.scss'],
 })
 export class MinesweeperComponent implements OnInit {
-  public userMatrix: Matrix;
-  public enemyMatrix: Matrix;
-  public currentConfig: gameConfig;
+  public userMatrix!: Matrix;
+  public currentConfig!: gameConfig;
   public selectedDifficulty: gameDifficulty = 'easy';
   public difficultyOptions: gameDifficulty[] = [...MinesweeperDifficulties];
 
   constructor(public game: MinesweeperService) {
-    this.currentConfig = this.game.gameConfig.easy;
-    this.userMatrix = new Matrix(this.currentConfig.size, 'userMatrix', this.currentConfig);
-    this.enemyMatrix = new Matrix(this.currentConfig.size, 'enemyMatrix', this.currentConfig);
+    this.initializeMatrices();
   }
 
   ngOnInit(): void {}
@@ -26,7 +23,7 @@ export class MinesweeperComponent implements OnInit {
   initializeMatrices() {
     this.currentConfig = this.game.gameConfig[this.selectedDifficulty];
     this.userMatrix = new Matrix(this.currentConfig.size, 'userMatrix', this.currentConfig);
-    this.enemyMatrix = new Matrix(this.currentConfig.size, 'enemyMatrix', this.currentConfig);
+    this.userMatrix.forEach((row) => row.forEach((cell) => (cell.revealed = true)));
   }
 
   difficultyChange() {

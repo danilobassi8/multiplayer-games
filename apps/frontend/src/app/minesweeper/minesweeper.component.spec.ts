@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MinesweeperComponent } from './minesweeper.component';
@@ -8,9 +9,9 @@ describe('MinesweeperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MinesweeperComponent ]
-    })
-    .compileComponents();
+      imports: [SharedModule],
+      declarations: [MinesweeperComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MinesweeperComponent);
     component = fixture.componentInstance;

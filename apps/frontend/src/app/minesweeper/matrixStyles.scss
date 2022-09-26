@@ -1,0 +1,30 @@
+.matrix-wrapper {
+  .matrix-container {
+    display: grid;
+    grid-gap: 0px;
+    justify-content: center;
+
+    .matrix-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+
+      cursor: pointer;
+      background-color: #c0c0c0;
+      border: 1.5px solid;
+      border-top-color: #ffffff;
+      border-right-color: #7b7b7b;
+      border-bottom-color: #7b7b7b;
+
+      aspect-ratio: 1;
+    }
+  }
+}
+
+.bomb-image {
+  position: absolute;
+  width: 100%;
+  transform: translateY(-2px);
+}

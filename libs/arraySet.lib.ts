@@ -1,8 +1,8 @@
-class ArraySet extends Set<any> {
-  add(arr: any): any {
+export class ArraySet extends Set<any> {
+  override add(arr: any): any {
     super.add(arr.toString());
   }
-  has(arr): boolean {
+  override has(arr): boolean {
     return super.has(arr.toString());
   }
 }

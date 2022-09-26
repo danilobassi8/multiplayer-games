@@ -10,10 +10,10 @@ export type gameConfigs = { [key in gameDifficulty]: gameConfig };
   providedIn: 'root',
 })
 export class MinesweeperService extends BaseGameService {
-  gameConfig: gameConfigs = {
-    easy: { bombs: 10, size: 9 },
-    medium: { bombs: 30, size: 40 },
-    hard: { bombs: 95, size: 50 },
+  public gameConfig: gameConfigs = {
+    easy: { bombs: 10, size: 8 },
+    medium: { bombs: 40, size: 16 },
+    hard: { bombs: 120, size: 30 },
   };
 
   constructor() {

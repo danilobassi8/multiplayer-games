@@ -2,7 +2,7 @@ export class RNG {
   private includeLimits: boolean;
   private onlyInteger: boolean;
 
-  constructor(include = true, onlyInteger = true) {
+  constructor({ include = true, onlyInteger = true }) {
     this.includeLimits = include;
     this.onlyInteger = onlyInteger;
   }
