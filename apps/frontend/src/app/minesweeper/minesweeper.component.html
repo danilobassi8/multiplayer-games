@@ -16,11 +16,16 @@
 <ng-template #matrixTemplate let-matrix="matrix">
   <div class="matrix-wrapper pb-2">
     <div
-      class="matrix-container"
+      class="matrix-container matrix-sized-{{currentConfig.size}}"
       [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 100%) / ' + currentConfig.size +'))'"
     >
       <ng-container *ngFor="let row of matrix">
-        <div *ngFor="let cell of row" class="matrix-col">
+        <div
+          *ngFor="let cell of row"
+          class="matrix-col"
+          [class.revealed]="cell.revealed"
+          [class.empty]="cell.revealed && cell.nearBombs == 0 && !cell.bomb"
+        >
           <img *ngIf="cell.bomb" src="/assets/bomb.png" class="bomb-image" />
           <ng-container *ngTemplateOutlet="cellNumber; context: {cell}"></ng-container>
         </div>
@@ -30,11 +35,8 @@
 </ng-template>
 
 <ng-template #cellNumber let-cell="cell">
-  <p
+  <span
     *ngIf="!cell.bomb && cell.revealed"
-    class="m-0 p-0 near-bombs-{{cell.nearBombs}}"
-    style="font-size: 13px; font-weight: bolder;"
-  >
-    {{ cell.nearBombs }}
-  </p>
+    class="m-0 p-0 near-bombs-text near-{{cell.nearBombs}}"
+  ></span>
 </ng-template>

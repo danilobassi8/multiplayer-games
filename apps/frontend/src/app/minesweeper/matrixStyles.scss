@@ -1,8 +1,27 @@
+@use "sass:string";
+
+$cell_colors: (
+  1: blue,
+  2: green,
+  3: red,
+  4: darkblue,
+  5: darkred,
+  6: teal,
+  7: black,
+  8: grey,
+);
+
 .matrix-wrapper {
   .matrix-container {
     display: grid;
     grid-gap: 0px;
     justify-content: center;
+    font-size: 13px;
+    font-weight: bolder;
+
+    &.matrix-sized-8 {
+      font-size: 25px;
+    }
 
     .matrix-col {
       display: flex;
@@ -17,8 +36,18 @@
       border-top-color: #ffffff;
       border-right-color: #7b7b7b;
       border-bottom-color: #7b7b7b;
-
       aspect-ratio: 1;
+
+      &.revealed {
+        border-top: 1px solid #b9bfc8;
+        border-right: 1px solid #b9bfc8;
+        border-bottom: 1px solid #b9bfc8;
+        border-left: 1px solid #b9bfc8;
+        border-radius: 0;
+        &.empty {
+          background-color: grey;
+        }
+      }
     }
   }
 }
@@ -27,4 +56,15 @@
   position: absolute;
   width: 100%;
   transform: translateY(-2px);
+}
+
+.near-bombs-text {
+  @each $i, $color in $cell_colors {
+    &.near-#{$i} {
+      color: $color;
+      &::after {
+        content: string.quote(#{$i});
+      }
+    }
+  }
 }
