@@ -1,0 +1,19 @@
+<div
+  class="matrix-container matrix-sized-{{currentConfig.size}}"
+  [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 100%) / ' + currentConfig.size +'))'"
+>
+  <ng-container *ngFor="let row of matrix">
+    <div
+      *ngFor="let cell of row"
+      class="matrix-col"
+      [class.revealed]="cell.revealed"
+      [class.empty]="cell.revealed && cell.nearBombs == 0 && !cell.bomb"
+      (click)="cellClicked.emit(cell)"
+    >
+      <ng-container *ngIf="cell.revealed">
+        <img *ngIf="cell.bomb " src="/assets/bomb.png" class="bomb-image" />
+        <span *ngIf="!cell.bomb " class="m-0 p-0 near-bombs-text near-{{cell.nearBombs}}"></span>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

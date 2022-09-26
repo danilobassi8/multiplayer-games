@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'app-difficulty-selector',
   templateUrl: './difficulty-selector.component.html',
-  styleUrls: ['./difficulty-selector.component.scss', '../matrixStyles.scss'],
+  styleUrls: ['./difficulty-selector.component.scss'],
 })
 export class DifficultySelectorComponent implements OnInit {
   public userMatrix!: Matrix;
@@ -26,7 +26,13 @@ export class DifficultySelectorComponent implements OnInit {
 
   initializeMatrices() {
     this.currentConfig = this.game.gameConfig[this.selectedDifficulty];
-    this.userMatrix = new Matrix(this.currentConfig.size, 'userMatrix', this.currentConfig);
+    this.userMatrix = new Matrix(this.currentConfig);
+    // just to let the user test the matrix, lets make the bombs visible
+    this.userMatrix.forEach((row) =>
+      row.forEach((cell) => {
+        if (cell.bomb) cell.revealed = true;
+      })
+    );
   }
 
   difficultyChange() {

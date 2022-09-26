@@ -25,10 +25,11 @@ export class Matrix extends Array<Array<Cell>> {
   status: 'playing' | 'game over' | 'win' = 'playing';
   player: any;
 
-  constructor(maxSize: number, player, gameConfig: gameConfig) {
+  constructor(gameConfig: gameConfig, player: string = 'player') {
     super();
 
     this.player = player;
+    const maxSize = gameConfig?.size;
 
     for (let i = 0; i < maxSize; i++) {
       this[i] = [];
@@ -36,7 +37,9 @@ export class Matrix extends Array<Array<Cell>> {
         this[i].push(new Cell(i, j));
       }
     }
-    this.generateBombs(gameConfig);
+    if (gameConfig) {
+      this.generateBombs(gameConfig);
+    }
   }
 
   /** Generate matrix's initial bombs */
