@@ -3,6 +3,27 @@
     [matrix]="matrix"
     [currentConfig]="gameConfig"
     (cellClicked)="onCellClicked($event)"
+    class="game"
   >
   </minesweeper-game-matrix>
+
+  <div class="side-panel">
+    <div *ngIf="matrix.status !== 'game over'">
+      <h1>Flags used: 7</h1>
+      <h3>Difficulty <span class="dificulty-color">Hola</span></h3>
+      <h3>Change difficulty</h3>
+
+      <p-selectButton [options]="allDifficulties" [(ngModel)]="nextDifficulty"></p-selectButton>
+
+      <button
+        pButton
+        class="p-button-lg"
+        type="button"
+        icon="pi pi-refresh"
+        iconPos="left"
+        label="Restart"
+        (click)="initializeGame(nextDifficulty)"
+      ></button>
+    </div>
+  </div>
 </div>
