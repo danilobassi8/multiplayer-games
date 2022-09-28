@@ -6,6 +6,7 @@ import {
 import { Matrix, GameConfig, Cell } from './../../../../../../libs/minesweeper.lib';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-offline',
@@ -40,6 +41,7 @@ export class OfflineComponent implements OnInit {
     this.matrix.reveal(cell);
     if (this.matrix.status === 'game over') {
       console.log('game over');
+      Swal.fire('Game Over');
     }
   }
 }

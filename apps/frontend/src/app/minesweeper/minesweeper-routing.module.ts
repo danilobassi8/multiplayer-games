@@ -11,6 +11,7 @@ const routes: Routes = [
       { path: '', component: LobbyComponent },
       { path: 'create', component: DifficultySelectorComponent },
       { path: 'offline/:difficulty', component: OfflineComponent },
+      { path: 'offline', redirectTo: 'offline/medium' },
     ],
   },
 ];
