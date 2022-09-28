@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { gameConfig, Matrix } from 'libs/minesweeper.lib';
 import {
   gameDifficulty,
@@ -18,7 +19,7 @@ export class DifficultySelectorComponent implements OnInit {
   public difficultyOptions: gameDifficulty[] = [...MinesweeperDifficulties];
   public networkGamemode = 'Offline';
 
-  constructor(public game: MinesweeperService) {
+  constructor(public game: MinesweeperService, private router: Router) {
     this.initializeMatrices();
   }
 
@@ -38,5 +39,13 @@ export class DifficultySelectorComponent implements OnInit {
   difficultyChange() {
     console.log(this.selectedDifficulty);
     this.initializeMatrices();
+  }
+
+  onPlayButton() {
+    if (this.networkGamemode == 'Offline') {
+      this.router.navigate(['minesweeper', 'offline', this.selectedDifficulty]);
+    } else {
+      console.log('TODO: redirect to multiplayer');
+    }
   }
 }

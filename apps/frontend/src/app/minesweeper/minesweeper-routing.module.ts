@@ -1,3 +1,4 @@
+import { OfflineComponent } from './offline/offline.component';
 import { DifficultySelectorComponent } from './difficulty-selector/difficulty-selector.component';
 import { LobbyComponent } from './lobby/lobby.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -9,6 +10,7 @@ const routes: Routes = [
     children: [
       { path: '', component: LobbyComponent },
       { path: 'create', component: DifficultySelectorComponent },
+      { path: 'offline/:id', component: OfflineComponent },
     ],
   },
 ];
