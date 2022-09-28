@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       { path: '', component: LobbyComponent },
       { path: 'create', component: DifficultySelectorComponent },
-      { path: 'offline/:id', component: OfflineComponent },
+      { path: 'offline/:difficulty', component: OfflineComponent },
     ],
   },
 ];

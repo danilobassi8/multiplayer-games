@@ -1,1 +1,8 @@
-<p>offline works!</p>
+<div class="offline-game-container py-4 w-100">
+  <minesweeper-game-matrix
+    [matrix]="matrix"
+    [currentConfig]="gameConfig"
+    (cellClicked)="onCellClicked($event)"
+  >
+  </minesweeper-game-matrix>
+</div>

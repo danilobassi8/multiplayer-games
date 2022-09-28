@@ -19,13 +19,13 @@ export class Cell {
   }
 }
 
-export type gameConfig = { bombs: number; size: number };
+export type GameConfig = { bombs: number; size: number };
 
 export class Matrix extends Array<Array<Cell>> {
   status: 'playing' | 'game over' | 'win' = 'playing';
   player: any;
 
-  constructor(gameConfig: gameConfig, player: string = 'player') {
+  constructor(gameConfig: GameConfig, player: string = 'player') {
     super();
 
     this.player = player;
@@ -43,7 +43,7 @@ export class Matrix extends Array<Array<Cell>> {
   }
 
   /** Generate matrix's initial bombs */
-  generateBombs(config: gameConfig) {
+  generateBombs(config: GameConfig) {
     const rng = new RNG({ onlyInteger: true });
     const arraySet = new ArraySet();
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { gameConfig, Matrix } from 'libs/minesweeper.lib';
+import { GameConfig, Matrix } from 'libs/minesweeper.lib';
 import {
-  gameDifficulty,
+  GameDifficulty,
   MinesweeperDifficulties,
   MinesweeperService,
 } from '../../services/minesweeper.service';
@@ -14,9 +14,9 @@ import {
 })
 export class DifficultySelectorComponent implements OnInit {
   public userMatrix!: Matrix;
-  public currentConfig!: gameConfig;
-  public selectedDifficulty: gameDifficulty = 'easy';
-  public difficultyOptions: gameDifficulty[] = [...MinesweeperDifficulties];
+  public currentConfig!: GameConfig;
+  public selectedDifficulty: GameDifficulty = 'easy';
+  public difficultyOptions: GameDifficulty[] = [...MinesweeperDifficulties];
   public networkGamemode = 'Offline';
 
   constructor(public game: MinesweeperService, private router: Router) {

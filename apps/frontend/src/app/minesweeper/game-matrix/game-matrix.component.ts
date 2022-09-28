@@ -1,5 +1,5 @@
 import { MinesweeperService } from './../../services/minesweeper.service';
-import { gameConfig, Matrix, Cell } from './../../../../../../libs/minesweeper.lib';
+import { GameConfig, Matrix, Cell } from './../../../../../../libs/minesweeper.lib';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class GameMatrixComponent implements OnInit {
   @Input() matrix: Matrix;
-  @Input() currentConfig: gameConfig;
+  @Input() currentConfig: GameConfig;
   @Output() cellClicked = new EventEmitter<Cell>();
 
   constructor(private game: MinesweeperService) {

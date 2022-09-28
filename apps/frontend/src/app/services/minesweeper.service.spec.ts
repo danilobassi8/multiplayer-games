@@ -1,4 +1,4 @@
-import { gameConfig, Matrix } from './../../../../../libs/minesweeper.lib';
+import { GameConfig, Matrix } from './../../../../../libs/minesweeper.lib';
 import { TestBed } from '@angular/core/testing';
 
 import { MinesweeperDifficulties, MinesweeperService } from './minesweeper.service';
@@ -18,7 +18,7 @@ describe('MinesweeperService', () => {
   describe('Should correctly generate bombs', () => {
     MinesweeperDifficulties.forEach((confString) => {
       console.log({ confString, service });
-      const conf = service.gameConfig[confString] as gameConfig;
+      const conf = service.gameConfig[confString] as GameConfig;
       const matrix = new Matrix(conf.size, 'test', conf);
 
       for (let i = 0; i < 1; i) {
