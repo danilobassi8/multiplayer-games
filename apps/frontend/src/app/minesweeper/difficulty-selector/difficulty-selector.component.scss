@@ -1,5 +1,9 @@
 .main-double-board {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
 }
 
 .options-card-header {
@@ -26,5 +30,23 @@
     .text-colored {
       color: var(--red);
     }
+  }
+}
+
+.matrix-container {
+  min-width: 700px;
+  margin-right: 50px;
+}
+.option-menu-container {
+  min-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .matrix-container {
+    min-width: 100%;
+    margin-right: 0px;
+  }
+  .option-menu-container {
+    min-width: 100%;
   }
 }

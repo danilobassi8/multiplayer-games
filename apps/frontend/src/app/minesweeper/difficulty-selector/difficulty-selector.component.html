@@ -1,12 +1,10 @@
-<div class="main-double-board">
-  <div class="row align-items-center">
-    <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
-    <ng-container *ngTemplateOutlet="optionMenuTemplate"></ng-container>
-  </div>
+<div class="main-double-board py-5">
+  <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
+  <ng-container *ngTemplateOutlet="optionMenuTemplate"></ng-container>
 </div>
 
 <ng-template #matrixTemplate let-matrix="matrix">
-  <div class="matrix-wrapper col-12 col-md-7 my-3">
+  <div class="matrix-container">
     <minesweeper-game-matrix
       [matrix]="matrix"
       [currentConfig]="currentConfig"
@@ -15,15 +13,8 @@
   </div>
 </ng-template>
 
-<ng-template #cellNumber let-cell="cell">
-  <span
-    *ngIf="!cell.bomb && cell.revealed"
-    class="m-0 p-0 near-bombs-text near-{{cell.nearBombs}}"
-  ></span>
-</ng-template>
-
 <ng-template #optionMenuTemplate>
-  <div class="col-12 col-md-5 pr-md-4">
+  <div class="option-menu-container">
     <div class="d-flex justify-content-center my-4">
       <p-selectButton
         [options]="difficultyOptions"
@@ -41,6 +32,7 @@
           Configuration: <span class="text-colored">{{ selectedDifficulty | titlecase }}</span>
         </h3>
       </div>
+
       <p-card>
         <ul>
           <li>
