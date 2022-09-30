@@ -11,7 +11,7 @@
       (click)="cellClicked.emit(cell)"
     >
       <ng-container *ngIf="cell.revealed">
-        <img *ngIf="cell.bomb " src="../../../assets/bomb.png" class="bomb-image" />
+        <img *ngIf="cell.bomb " src="assets/bomb.png" class="bomb-image" />
         <span *ngIf="!cell.bomb " class="m-0 p-0 near-bombs-text near-{{cell.nearBombs}}"></span>
       </ng-container>
     </div>
