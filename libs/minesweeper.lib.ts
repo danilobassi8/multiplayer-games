@@ -113,4 +113,14 @@ export class Matrix extends Array<Array<Cell>> {
   revealAllCells() {
     this.forEach((row) => row.forEach((cel) => (cel.revealed = true)));
   }
+
+  public getUsedFlags(): number {
+    let acum = 0;
+    this.forEach((rows) =>
+      rows.forEach((cell) => {
+        acum += cell.flagged === 'flag' ? 1 : 0;
+      })
+    );
+    return acum;
+  }
 }

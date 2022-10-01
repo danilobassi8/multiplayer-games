@@ -1,5 +1,27 @@
 .offline-game-container {
   display: flex;
   flex-wrap: wrap-reverse;
-  justify-content: space-evenly;
+  justify-content: center;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-left: 50px;
+  min-width: 350px;
+  flex-grow: 0;
+}
+
+@media (max-width: 1200px) {
+  .side-panel {
+    flex-direction: row;
+    min-width: none;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    width: 100%;
+  }
 }

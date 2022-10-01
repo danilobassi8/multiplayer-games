@@ -19,6 +19,7 @@ export class OfflineComponent implements OnInit {
   public selectedDifficulty: GameDifficultyOption;
   public allDifficulties = [...MinesweeperDifficulties];
   public nextDifficulty: GameDifficultyOption;
+  public usedFlags = 0;
 
   constructor(
     private game: MinesweeperService,
@@ -47,6 +48,7 @@ export class OfflineComponent implements OnInit {
     }
 
     this.selectedDifficulty = difficulty;
+    this.nextDifficulty = difficulty;
     this.gameConfig = this.game.gameConfig[difficulty];
     this.matrix = new Matrix(this.gameConfig);
   }
@@ -56,5 +58,10 @@ export class OfflineComponent implements OnInit {
     if (this.matrix.status === 'game over') {
       console.log('game over');
     }
+  }
+
+  onCellRightClicked(cell: Cell) {
+    cell.toggleFlaggedState();
+    this.usedFlags = this.matrix.getUsedFlags();
   }
 }

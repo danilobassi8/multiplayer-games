@@ -11,6 +11,7 @@ export class GameMatrixComponent implements OnInit {
   @Input() matrix: Matrix;
   @Input() currentConfig: GameConfig;
   @Output() cellClicked = new EventEmitter<Cell>();
+  @Output() cellRightClicked = new EventEmitter<Cell>();
 
   constructor(private game: MinesweeperService) {
     this.currentConfig = game.gameConfig.easy;
@@ -21,6 +22,6 @@ export class GameMatrixComponent implements OnInit {
 
   onRightClick(event: Event, cell: Cell) {
     event.preventDefault();
-    cell.toggleFlaggedState();
+    this.cellRightClicked.emit(cell);
   }
 }

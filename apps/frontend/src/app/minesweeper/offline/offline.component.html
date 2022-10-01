@@ -3,32 +3,44 @@
     [matrix]="matrix"
     [currentConfig]="gameConfig"
     (cellClicked)="onCellClicked($event)"
+    (cellRightClicked)="onCellRightClicked($event)"
     class="game"
   >
   </minesweeper-game-matrix>
 
   <div class="side-panel">
-    <div>
-      <h1>Flags used: 7</h1>
-      <h3>
-        Difficulty
-        <span class="difficulty-color-{{selectedDifficulty}}"
-          >{{selectedDifficulty | titlecase}}</span
-        >
-      </h3>
-      <h3>Change difficulty</h3>
+    <div class="flags-used d-flex mx-2">
+      <img src="assets/minesweeper/red_flag.png" alt="flags-used" width="40px" height="50px" />
+      <h1>: {{ gameConfig.bombs - usedFlags}}</h1>
+    </div>
 
-      <p-selectButton [options]="allDifficulties" [(ngModel)]="nextDifficulty"></p-selectButton>
+    <h3 class="mx-2">
+      Difficulty
+      <span class="difficulty-color-{{selectedDifficulty}}"
+        >{{selectedDifficulty | titlecase}}</span
+      >
+    </h3>
 
-      <button
-        pButton
-        class="p-button-lg"
-        type="button"
-        icon="pi pi-refresh"
-        iconPos="left"
-        label="Restart"
-        (click)="initializeGame(nextDifficulty)"
-      ></button>
+    <div class="mx-2">
+      <div class="d-flex">
+        <p-selectButton [options]="allDifficulties" [(ngModel)]="nextDifficulty"></p-selectButton>
+
+        <button
+          pButton
+          class="p-button ml-2"
+          type="button"
+          icon="pi pi-refresh"
+          iconPos="left"
+          label="Restart"
+          (click)="initializeGame(nextDifficulty)"
+        ></button>
+      </div>
+      <div
+        [ngClass]="nextDifficulty !== selectedDifficulty ? 'opacity-show' : 'opacity-hide'"
+        style="color: var(--yellow);"
+      >
+        Click restart to change difficulty
+      </div>
     </div>
   </div>
 </div>
