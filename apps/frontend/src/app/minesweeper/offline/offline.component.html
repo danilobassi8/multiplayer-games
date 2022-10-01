@@ -50,10 +50,10 @@
 
     <ng-container [ngSwitch]="matrix.status">
       <div class="">
-        <div class="animate__animated animate__backInUp" *ngSwitchCase="'win'">
+        <div class="animate__animated animate__bounceIn" *ngSwitchCase="'win'">
           <h1 style="color: var(--green);">You win!</h1>
         </div>
-        <div class="animate__animated animate__backInUp" *ngSwitchCase="'game over'">
+        <div class="animate__animated animate__bounceIn" *ngSwitchCase="'game over'">
           <h1 style="color: var(--red);">You Loose!</h1>
         </div>
       </div>
