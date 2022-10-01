@@ -1,6 +1,7 @@
 <div
   class="matrix-container matrix-sized-{{currentConfig.size}}"
-  [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 100%) / ' + currentConfig.size +'))'"
+  [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 90vw) / ' + currentConfig.size +'))'"
+
 >
   <ng-container *ngFor="let row of matrix; let rowIdx = index">
     <div
