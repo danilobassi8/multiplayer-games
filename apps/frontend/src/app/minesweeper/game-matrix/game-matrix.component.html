@@ -1,7 +1,6 @@
 <div
   class="matrix-container matrix-sized-{{currentConfig.size}}"
   [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 90vw) / ' + currentConfig.size +'))'"
-
 >
   <ng-container *ngFor="let row of matrix; let rowIdx = index">
     <div
@@ -11,11 +10,23 @@
       [class.empty]="cell.revealed && cell.nearBombs == 0 && !cell.bomb"
       [class.darker]="(rowIdx % 2 + colIdx) % 2"
       (click)="cellClicked.emit(cell)"
+      (contextmenu)="onRightClick($event, cell)"
     >
-
       <ng-container *ngIf="cell.revealed">
-        <img *ngIf="cell.bomb " src="assets/bomb.png" class="bomb-image" />
-        <span *ngIf="!cell.bomb " class="m-0 p-0 near-bombs-text near-{{cell.nearBombs}}"></span>
+        <img *ngIf="cell.bomb" src="assets/minesweeper/bomb.png" class="cell-image" />
+        <span *ngIf="!cell.bomb" class="m-0 p-0 near-bombs-text near-{{cell.nearBombs}}"></span>
+      </ng-container>
+      <ng-container *ngIf="cell.revealed == false">
+        <img
+          *ngIf="cell.flagged == 'flag'"
+          src="assets/minesweeper/red_flag.png"
+          class="cell-image"
+        />
+        <img
+          *ngIf="cell.flagged == 'question'"
+          src="assets/minesweeper/question_mark.png"
+          class="cell-image h-75"
+        />
       </ng-container>
     </div>
   </ng-container>

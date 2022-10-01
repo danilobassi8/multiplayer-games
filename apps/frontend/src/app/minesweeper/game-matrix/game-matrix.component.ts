@@ -5,7 +5,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'minesweeper-game-matrix',
   templateUrl: './game-matrix.component.html',
-  styleUrls: ['./game-matrix.component.scss', ],
+  styleUrls: ['./game-matrix.component.scss'],
 })
 export class GameMatrixComponent implements OnInit {
   @Input() matrix: Matrix;
@@ -18,4 +18,9 @@ export class GameMatrixComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onRightClick(event: Event, cell: Cell) {
+    event.preventDefault();
+    cell.toggleFlaggedState();
+  }
 }

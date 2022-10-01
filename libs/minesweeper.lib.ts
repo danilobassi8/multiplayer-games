@@ -6,9 +6,8 @@ export class Cell {
   column: number;
   bomb: boolean;
   revealed: boolean;
-  flagged: boolean;
+  flagged: 'flag' | 'question' | 'no';
   nearBombs: number;
-
 
   constructor(row, col) {
     this.row = row;
@@ -16,7 +15,16 @@ export class Cell {
     this.bomb = false;
     this.revealed = false;
     this.nearBombs = 0;
-    this.flagged = false;
+    this.flagged = 'no';
+  }
+
+  toggleFlaggedState() {
+    if (this.flagged == 'no') {
+      this.flagged = 'flag';
+      return;
+    }
+
+    this.flagged = this.flagged === 'flag' ? 'question' : 'no';
   }
 }
 

@@ -58,12 +58,12 @@ $cell_colors: (
     }
 
     &.darker {
-        filter: brightness(0.96);
+      filter: brightness(0.96);
     }
   }
 }
 
-.bomb-image {
+.cell-image {
   position: absolute;
   width: 100%;
   transform: translateY(-2px);
