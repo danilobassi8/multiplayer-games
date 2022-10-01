@@ -35,3 +35,10 @@
     </div>
   </ng-container>
 </div>
+
+<!-- This is done to pre-load images -->
+<img
+  *ngFor="let img of ['bomb','red_flag','question_mark']"
+  src="assets/minesweeper/{{img}}.png"
+  class="d-none"
+/>
