@@ -15,24 +15,6 @@
   border-radius: var(--border-radius);
 }
 
-.config-manager {
-  &.easy {
-    .text-colored {
-      color: var(--green);
-    }
-  }
-  &.medium {
-    .text-colored {
-      color: var(--orange);
-    }
-  }
-  &.hard {
-    .text-colored {
-      color: var(--red);
-    }
-  }
-}
-
 .matrix-container {
   min-width: 700px;
   margin-right: 50px;

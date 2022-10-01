@@ -8,9 +8,14 @@
   </minesweeper-game-matrix>
 
   <div class="side-panel">
-    <div *ngIf="matrix.status !== 'game over'">
+    <div>
       <h1>Flags used: 7</h1>
-      <h3>Difficulty <span class="dificulty-color">Hola</span></h3>
+      <h3>
+        Difficulty
+        <span class="difficulty-color-{{selectedDifficulty}}"
+          >{{selectedDifficulty | titlecase}}</span
+        >
+      </h3>
       <h3>Change difficulty</h3>
 
       <p-selectButton [options]="allDifficulties" [(ngModel)]="nextDifficulty"></p-selectButton>

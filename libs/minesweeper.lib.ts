@@ -9,6 +9,7 @@ export class Cell {
   flagged: boolean;
   nearBombs: number;
 
+
   constructor(row, col) {
     this.row = row;
     this.column = col;

@@ -10,3 +10,13 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.difficulty-color-easy {
+  color: var(--green);
+}
+.difficulty-color-medium {
+  color: var(--orange);
+}
+.difficulty-color-hard {
+  color: var(--red);
+}

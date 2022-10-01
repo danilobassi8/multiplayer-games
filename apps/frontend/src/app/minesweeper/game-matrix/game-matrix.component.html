@@ -2,14 +2,16 @@
   class="matrix-container matrix-sized-{{currentConfig.size}}"
   [style.grid-template-columns]="'repeat(' + currentConfig.size + ',calc(min(700px, 100%) / ' + currentConfig.size +'))'"
 >
-  <ng-container *ngFor="let row of matrix">
+  <ng-container *ngFor="let row of matrix; let rowIdx = index">
     <div
-      *ngFor="let cell of row"
-      class="matrix-col"
+      *ngFor="let cell of row; let colIdx = index"
+      class="matrix-cell"
       [class.revealed]="cell.revealed"
       [class.empty]="cell.revealed && cell.nearBombs == 0 && !cell.bomb"
+      [class.darker]="(rowIdx % 2 + colIdx) % 2"
       (click)="cellClicked.emit(cell)"
     >
+
       <ng-container *ngIf="cell.revealed">
         <img *ngIf="cell.bomb " src="assets/bomb.png" class="bomb-image" />
         <span *ngIf="!cell.bomb " class="m-0 p-0 near-bombs-text near-{{cell.nearBombs}}"></span>

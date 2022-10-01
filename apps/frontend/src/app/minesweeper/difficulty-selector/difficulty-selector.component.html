@@ -26,7 +26,7 @@
       </p-selectButton>
     </div>
 
-    <div class="config-manager {{selectedDifficulty}}">
+    <div class="config-manager">
       <div class="options-card-header my-0 mx-3 p-2">
         <h3 class="text-center">
           Configuration: <span class="text-colored">{{ selectedDifficulty | titlecase }}</span>
@@ -38,16 +38,24 @@
           <li>
             <h4>
               Size:
-              <span class="text-colored">{{currentConfig.size}} x {{currentConfig.size}}</span>
+              <span class="difficulty-color-{{selectedDifficulty}}"
+                >{{currentConfig.size}} x {{currentConfig.size}}</span
+              >
             </h4>
           </li>
           <li>
             <h4>
-              Cells: <span class="text-colored">{{currentConfig.size * currentConfig.size}}</span>
+              Cells:
+              <span class="difficulty-color-{{selectedDifficulty}}"
+                >{{currentConfig.size * currentConfig.size}}</span
+              >
             </h4>
           </li>
           <li>
-            <h4>Bombs: <span class="text-colored">{{currentConfig.bombs}}</span></h4>
+            <h4>
+              Bombs:
+              <span class="difficulty-color-{{selectedDifficulty}}">{{currentConfig.bombs}}</span>
+            </h4>
           </li>
         </ul>
 
