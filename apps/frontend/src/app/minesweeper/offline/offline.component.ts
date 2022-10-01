@@ -55,13 +55,10 @@ export class OfflineComponent implements OnInit {
 
   onCellClicked(cell: Cell) {
     this.matrix.reveal(cell);
-    if (this.matrix.status === 'game over') {
-      console.log('game over');
-    }
   }
 
   onCellRightClicked(cell: Cell) {
-    cell.toggleFlaggedState();
+    this.matrix.toggleCellState(cell);
     this.usedFlags = this.matrix.getUsedFlags();
   }
 }

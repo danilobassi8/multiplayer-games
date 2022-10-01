@@ -102,16 +102,40 @@ export class Matrix extends Array<Array<Cell>> {
     }
 
     cell.revealed = true;
-
     if (cell.nearBombs === 0) {
       this.getCellsArround(cell)
         .filter((cell) => cell.revealed == false)
         .forEach((cell) => this.reveal(cell));
     }
+
+    this.checkWinningCondition();
+  }
+
+  /** Check if this matrix has won the game. Return true if it won, false otherwise. Also updates the matrix status */
+  checkWinningCondition(): boolean {
+    if (this.status !== 'playing') return this.status === 'win';
+
+    const emptyCells = this.flat(2).filter((cell: Cell) => {
+      if (cell.bomb) return false;
+      if (cell.revealed) return false;
+      return true;
+    });
+
+    const didWon = emptyCells.length === 0;
+    if (didWon) {
+      this.status = 'win';
+      return true;
+    }
+    return false;
   }
 
   revealAllCells() {
     this.forEach((row) => row.forEach((cel) => (cel.revealed = true)));
+  }
+
+  toggleCellState(cell: Cell) {
+    cell.toggleFlaggedState();
+    this.checkWinningCondition();
   }
 
   public getUsedFlags(): number {

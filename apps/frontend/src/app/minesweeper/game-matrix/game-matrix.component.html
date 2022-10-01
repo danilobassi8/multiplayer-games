@@ -13,7 +13,11 @@
       (contextmenu)="onRightClick($event, cell)"
     >
       <ng-container *ngIf="cell.revealed">
-        <img *ngIf="cell.bomb" src="assets/minesweeper/bomb.png" class="cell-image" />
+        <img
+          *ngIf="cell.bomb"
+          src="assets/minesweeper/bomb.png"
+          class="h-90 cell-image animate__animated animate__bounceIn"
+        />
         <span *ngIf="!cell.bomb" class="m-0 p-0 near-bombs-text near-{{cell.nearBombs}}"></span>
       </ng-container>
       <ng-container *ngIf="cell.revealed == false">

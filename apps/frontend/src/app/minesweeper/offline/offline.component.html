@@ -9,18 +9,21 @@
   </minesweeper-game-matrix>
 
   <div class="side-panel">
+    <!-- flags used-->
     <div class="flags-used d-flex mx-2">
-      <img src="assets/minesweeper/red_flag.png" alt="flags-used" width="40px" height="50px" />
-      <h1>: {{ gameConfig.bombs - usedFlags}}</h1>
+      <img src="assets/minesweeper/red_flag.png" alt="flags-used" width="30px" height="30px" />
+      <h3>: {{ gameConfig.bombs - usedFlags}}</h3>
     </div>
 
+    <!-- Difficulty -->
     <h3 class="mx-2">
-      Difficulty
+      Difficulty:
       <span class="difficulty-color-{{selectedDifficulty}}"
         >{{selectedDifficulty | titlecase}}</span
       >
     </h3>
 
+    <!-- Restart with new diff -->
     <div class="mx-2">
       <div class="d-flex">
         <p-selectButton [options]="allDifficulties" [(ngModel)]="nextDifficulty"></p-selectButton>
@@ -36,11 +39,24 @@
         ></button>
       </div>
       <div
-        [ngClass]="nextDifficulty !== selectedDifficulty ? 'opacity-show' : 'opacity-hide'"
+        class="mt-1 animate__animated animate__faster"
+        [class.animate__fadeIn]="nextDifficulty !== selectedDifficulty"
+        [class.animate__fadeOut]="nextDifficulty == selectedDifficulty"
         style="color: var(--yellow);"
       >
         Click restart to change difficulty
       </div>
     </div>
+
+    <ng-container [ngSwitch]="matrix.status">
+      <div class="">
+        <div class="animate__animated animate__backInUp" *ngSwitchCase="'win'">
+          <h1 style="color: var(--green);">You win!</h1>
+        </div>
+        <div class="animate__animated animate__backInUp" *ngSwitchCase="'game over'">
+          <h1 style="color: var(--red);">You Loose!</h1>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>
