@@ -1,4 +1,5 @@
 import { BaseGameService } from './base-game.service';
+import { AuthService } from '@auth0/auth0-angular';
 import { Injectable } from '@angular/core';
 import { GameConfig } from 'libs/minesweeper.lib';
 
@@ -16,8 +17,8 @@ export class MinesweeperService extends BaseGameService {
     hard: { bombs: 120, size: 30 },
   };
 
-  constructor() {
-    super('MinesweeperRoom', {
+  constructor(private authService: AuthService) {
+    super('MinesweeperRoom', authService, {
       maxClients: 2,
     });
   }

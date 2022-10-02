@@ -1,17 +1,13 @@
-import { IncomingMessage } from 'http';
-import { Room, Client } from 'colyseus';
+import { Room, Client, SortOptions } from 'colyseus';
 import { Logger } from '@nestjs/common';
 
 export class MinesweeperRoom extends Room {
+  static filterBy = ['difficulty'];
+  static sortBy: SortOptions = { difficulty: 'asc' };
+
   // When room is initialized
   onCreate(options: any) {
     Logger.log('Room created', { options });
-  }
-
-  // Authorize client based on provided options before WebSocket handshake is complete
-  onAuth(client: Client, options: any, request: IncomingMessage): Boolean {
-    Logger.log('onAuth');
-    return true;
   }
 
   // When client successfully join the room

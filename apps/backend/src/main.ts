@@ -14,7 +14,10 @@ async function bootstrap() {
 
   GAME_ROOMS.forEach((room) => {
     Logger.log(`-- Registering room: ${room.name}`);
-    gameServer.define(room.name, room);
+    gameServer
+      .define(room.name, room)
+      .filterBy(room.filterBy || [])
+      .sortBy(room.sortBy || { clients: 'desc' });
   });
 
   // attach Colyseus into the existing http server from NestJS
