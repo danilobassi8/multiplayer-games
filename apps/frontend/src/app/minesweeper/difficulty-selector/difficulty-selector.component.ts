@@ -18,6 +18,7 @@ export class DifficultySelectorComponent implements OnInit {
   public selectedDifficulty: GameDifficultyOption = 'easy';
   public difficultyOptions: GameDifficultyOption[] = [...MinesweeperDifficulties];
   public networkGamemode = 'Offline';
+  public roomPassword = '';
 
   constructor(public game: MinesweeperService, private router: Router) {
     this.initializeMatrices();

@@ -9,6 +9,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { CardModule } from 'primeng/card';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FieldsetModule } from 'primeng/fieldset';
+import { PasswordModule } from 'primeng/password';
 
 const MODULES = [
   FormsModule,
@@ -19,6 +20,7 @@ const MODULES = [
   DropdownModule,
   CardModule,
   AvatarModule,
+  PasswordModule,
   SelectButtonModule,
   FieldsetModule,
 ];

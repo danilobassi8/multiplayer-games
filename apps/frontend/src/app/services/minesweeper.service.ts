@@ -17,6 +17,8 @@ export class MinesweeperService extends BaseGameService {
   };
 
   constructor() {
-    super('MinesweeperRoom');
+    super('MinesweeperRoom', {
+      maxClients: 2,
+    });
   }
 }

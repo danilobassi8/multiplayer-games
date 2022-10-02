@@ -65,6 +65,17 @@
             [(ngModel)]="networkGamemode"
           ></p-selectButton>
         </div>
+
+        <div *ngIf="networkGamemode == 'Multiplayer'" class="d-flex">
+          <p-password
+            [(ngModel)]="roomPassword"
+            [feedback]="false"
+            [toggleMask]="true"
+            placeholder="Insert a password if you want a private room!"
+            styleClass="password-room-creation w-100"
+            class="w-100 m-2 animate__animated animate__bounceIn"
+          ></p-password>
+        </div>
       </p-card>
 
       <div class="d-flex justify-content-center my-4">

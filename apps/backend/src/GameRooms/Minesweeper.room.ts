@@ -5,7 +5,7 @@ import { Logger } from '@nestjs/common';
 export class MinesweeperRoom extends Room {
   // When room is initialized
   onCreate(options: any) {
-    Logger.log('Room created');
+    Logger.log('Room created', { options });
   }
 
   // Authorize client based on provided options before WebSocket handshake is complete

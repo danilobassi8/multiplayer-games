@@ -32,3 +32,11 @@
     min-width: 100%;
   }
 }
+
+:host ::ng-deep .password-room-creation {
+  width: 100%;
+  input {
+    width: 100%;
+  }
+}
+
