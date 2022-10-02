@@ -4,17 +4,20 @@ import { from } from 'rxjs';
 
 export class BaseGameService {
   public client = new Colyseus.Client(`ws://${environment.backend_url}`);
+  private currentRoom?: Colyseus.Room;
 
   constructor(public roomGame: string, public defaultGameOptions = {}) {}
 
-  joinOrCreateRoom(options) {
-    return from(
-      this.client.joinOrCreate(this.roomGame, { ...this.defaultGameOptions, ...options })
-    );
-  }
-
   createRoom(options) {
-    return from(this.client.create(this.roomGame, { ...this.defaultGameOptions, ...options }));
+    return from(
+      this.client.create(this.roomGame, { ...this.defaultGameOptions, ...options }).then((room) => {
+        if (this.currentRoom) {
+          this.currentRoom.leave();
+        }
+        console.log('Connected to new room:', room);
+        this.currentRoom = room;
+      })
+    );
   }
 
   getAvailableRooms() {

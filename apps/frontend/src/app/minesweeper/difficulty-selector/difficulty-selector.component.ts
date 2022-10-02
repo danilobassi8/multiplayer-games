@@ -46,7 +46,9 @@ export class DifficultySelectorComponent implements OnInit {
     if (this.networkGamemode == 'Offline') {
       this.router.navigate(['minesweeper', 'offline', this.selectedDifficulty]);
     } else {
-      console.log('TODO: redirect to multiplayer');
+      this.game.createRoom({ password: this.roomPassword }).subscribe((res) => {
+        console.log(res);
+      });
     }
   }
 }
