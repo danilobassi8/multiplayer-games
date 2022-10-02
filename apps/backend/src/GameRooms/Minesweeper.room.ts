@@ -1,4 +1,4 @@
-import { Room, Client, SortOptions } from 'colyseus';
+import { Room, Client, SortOptions, ServerError } from 'colyseus';
 import { Logger } from '@nestjs/common';
 
 export class MinesweeperRoom extends Room {
@@ -13,6 +13,15 @@ export class MinesweeperRoom extends Room {
   // When client successfully join the room
   onJoin(client: Client, options: any, auth: any) {
     Logger.log('Joined room');
+  }
+
+  /**Simply check if the user is logged in */
+  onAuth(client, options, request) {
+    if (options.player) {
+      return true;
+    } else {
+      throw new ServerError(403, 'Need to log in');
+    }
   }
 
   // When a client leaves the room

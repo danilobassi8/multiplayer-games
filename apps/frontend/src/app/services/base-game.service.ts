@@ -31,6 +31,9 @@ export class BaseGameService {
               this.currentRoom.onStateChange((state) => this.stateChanges.next(state));
               this.currentRoom.onMessage('*', (msg) => this.roomMessages.next(msg));
             })
+            .catch((error) => {
+              this.auth.loginWithRedirect();
+            })
         );
       })
     );
