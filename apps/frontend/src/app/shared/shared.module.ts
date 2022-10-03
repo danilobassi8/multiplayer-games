@@ -10,6 +10,8 @@ import { CardModule } from 'primeng/card';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FieldsetModule } from 'primeng/fieldset';
 import { PasswordModule } from 'primeng/password';
+import { MenuModule } from 'primeng/menu';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 const MODULES = [
   FormsModule,
@@ -17,11 +19,13 @@ const MODULES = [
   ButtonModule,
   ToggleButtonModule,
   MenubarModule,
+  MenuModule,
   DropdownModule,
   CardModule,
   AvatarModule,
   PasswordModule,
   SelectButtonModule,
+  MultiSelectModule,
   FieldsetModule,
 ];
 

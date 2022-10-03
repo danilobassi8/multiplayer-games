@@ -1,2 +1,54 @@
-<p>lobby works!</p>
-El usuario es: {{ auth.user$ | async | json }}
+<div class="d-flex align-items-center flex-wrap py-2" style="background-color: var(--primary);">
+  <img src="assets/minesweeper/bomb.png" alt="minesweeper bomb" height="45px" class="ml-2" />
+  <div class="m-1">
+    <p-multiSelect
+      (onChange)="onDifficultyChange()"
+      [(ngModel)]="selectedDificulties"
+      [options]="dificulties"
+      [maxSelectedLabels]="0"
+      [filter]="false"
+      [showHeader]="false"
+      optionLabel="difficulty"
+      placeholder="Select a difficulty."
+    >
+      <ng-template let-value pTemplate="selectedItems">
+        <div class="d-inline" *ngFor="let option of selectedDificulties; let idx = index">
+          <p class="d-inline">
+            {{option.difficulty | titlecase}}{{idx == selectedDificulties.length-1 ? '.' : ', '}}
+          </p>
+        </div>
+        <div *ngIf="selectedDificulties.length === 0">
+          Select a difficulty.
+        </div>
+      </ng-template>
+      <ng-template let-value pTemplate="item">
+        {{value.difficulty | titlecase}}
+      </ng-template>
+    </p-multiSelect>
+  </div>
+
+  <div class="m-1">
+    <button
+      pButton
+      type="button"
+      icon="pi pi-refresh"
+      iconPos="left"
+      label="Refresh"
+      class="p-button-warning"
+      (click)="getRooms()"
+    ></button>
+  </div>
+
+  <div class="m-1">
+    <button pButton type="button" class="p-button-raised p-button-primary">
+      Create room
+    </button>
+  </div>
+</div>
+
+<!-- Room list-->
+<ul>
+  <li *ngFor="let room of filteredRooms">
+    {{room | json}}
+  </li>
+</ul>
