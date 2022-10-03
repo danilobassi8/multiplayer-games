@@ -40,6 +40,6 @@ export class BaseGameService {
   }
 
   getAvailableRooms() {
-    return this.client.getAvailableRooms(this.roomGame);
+    return from(this.client.getAvailableRooms(this.roomGame));
   }
 }
