@@ -1,5 +1,4 @@
 import { Controller, Get, Param } from '@nestjs/common';
-
 import { MatchMakerService } from './services/matchMaker.service';
 
 @Controller()

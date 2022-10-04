@@ -7,7 +7,7 @@ export class MinesweeperRoom extends Room {
 
   // When room is initialized
   onCreate(options: any) {
-    this.setMetadata({ creator: options.player, maxClients: options.maxClients });
+    this.setMetadata({ creator: options.player });
     Logger.log('Room created', { options });
   }
 
