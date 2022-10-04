@@ -1,13 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
-import { AppService } from './app.service';
+import { MatchMakerService } from './services/matchMaker.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private matchMaker: MatchMakerService) {}
 
   @Get()
-  getData() {
-    return this.appService.getData();
+  helloWorld() {
+    return 'Hello there!';
+  }
+
+  @Get('/rooms/:roomName')
+  getRoomData(@Param() params) {
+    return this.matchMaker.queryRoom(params.roomName);
   }
 }
