@@ -1,0 +1,9 @@
+.room {
+  cursor: pointer;
+}
+:host ::ng-deep .room-toolbar {
+  &:hover {
+    background-color: var(--cyan-900);
+    transition: background-color 0.2s ease;
+  }
+}

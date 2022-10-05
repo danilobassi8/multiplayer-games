@@ -12,6 +12,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { PasswordModule } from 'primeng/password';
 import { MenuModule } from 'primeng/menu';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { ToolbarModule } from 'primeng/toolbar';
 
 const MODULES = [
   FormsModule,
@@ -27,6 +28,7 @@ const MODULES = [
   SelectButtonModule,
   MultiSelectModule,
   FieldsetModule,
+  ToolbarModule,
 ];
 
 @NgModule({

@@ -47,8 +47,41 @@
 </div>
 
 <!-- Room list-->
-<ul>
-  <li *ngFor="let room of filteredRooms">
-    {{room | json}}
-  </li>
-</ul>
+<div class="container pb-2">
+  <div *ngFor="let room of filteredRooms" class="room">
+    <p-toolbar styleClass="m-2 p-2 room-toolbar">
+      <div class="p-toolbar-group-left">
+        <!-- avatar-->
+        <p-avatar
+          size="large"
+          [image]="room.metadata?.creator?.picture || ''"
+          shape="circle"
+        ></p-avatar>
+        <!-- room info-->
+        <div class="d-flex flex-column">
+          <span class="m-0 ml-2"
+            >Creator:
+            <p class="d-inline text-primary">{{room.metadata.creator.given_name}}</p></span
+          >
+          <span class="m-0 ml-2"
+            >Players:
+            <p class="d-inline text-primary">{{room.clients}}/{{room.maxClients || 'x'}}</p></span
+          >
+        </div>
+      </div>
+
+      <div class="p-toolbar-group-right">
+        <!-- action buttons -->
+        <button
+          pButton
+          type="button"
+          icon="pi pi-arrow-up"
+          iconPos="left"
+          label="Join"
+          class="p-button-primary p-button-sm"
+          (click)="getRooms()"
+        ></button>
+      </div>
+    </p-toolbar>
+  </div>
+</div>
