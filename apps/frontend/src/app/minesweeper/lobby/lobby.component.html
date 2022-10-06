@@ -34,13 +34,18 @@
       icon="pi pi-refresh"
       iconPos="left"
       label="Refresh"
-      class="p-button-warning"
+      class="p-button-raised p-button-warning"
       (click)="getRooms()"
     ></button>
   </div>
 
   <div class="m-1">
-    <button pButton type="button" class="p-button-raised p-button-primary">
+    <button
+      pButton
+      type="button"
+      class="p-button-raised p-button-primary"
+      routerLink="/minesweeper/create"
+    >
       Create room
     </button>
   </div>
@@ -71,6 +76,15 @@
       </div>
 
       <div class="p-toolbar-group-right">
+        <!-- lock -->
+        <button
+          *ngIf="room.metadata.isPrivate"
+          pButton
+          type="button"
+          class="p-button-warning p-button-outlined p-button-rounded p-button-sm mr-1"
+          icon="pi pi-unlock"
+        ></button>
+
         <!-- action buttons -->
         <button
           pButton
