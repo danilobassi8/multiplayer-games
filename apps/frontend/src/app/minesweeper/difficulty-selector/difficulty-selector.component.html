@@ -1,4 +1,4 @@
-<div class="main-double-board py-5">
+<div class="main-double-board py-4">
   <ng-container *ngTemplateOutlet="matrixTemplate; context:{matrix:userMatrix}"></ng-container>
   <ng-container *ngTemplateOutlet="optionMenuTemplate"></ng-container>
 </div>
@@ -8,6 +8,7 @@
     <minesweeper-game-matrix
       [matrix]="matrix"
       [currentConfig]="currentConfig"
+      [maxHeightInPixels]="600"
       (cellClicked)="matrix.reveal($event)"
     ></minesweeper-game-matrix>
   </div>
